@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+		<title>FoundASquad - Cadastro</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	</head >
+	<body>
+		
+		<header>
+		<nav class="navbar navbar-expand-lg navbar-dark topo">
+			<a class="navbar-brand" href="index.php">
+			<img src="images/logoV7.png" width="75">
+			FoundASquad
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPrincipal" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse " id="navbarPrincipal">
+				<ul class="navbar-nav text-md-center nav-justified w-100">
+					<li class="nav-item">
+						<a class="nav-link" href="index.php">Inicio</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="login.html">Login</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="container-fluid">
+			<div class="text-center titulo" >
+				<h1>Cadastro</h1>
+			</div>
+			<form name="cadastro" action="cadastro.php" method="post" onsubmit=" return validar(this)">
+				<div class="row ">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="email">Endereço de Email</label>
+							<input type="email" class="form-control" id="email"  placeholder="Email" name="email" required="required" >
+						</div>
+						<div class="form-group">
+							<label for="nomeU">Nome de Usuário</label>
+							<input type="text" class="form-control" id="nomeU"  placeholder="Nome de Usuário" required="required" name="usuario" >
+						</div>
+						<div class="form-group">
+							<label for="nomeC">Nome Completo</label>
+							<input type="text" class="form-control" id="nomeC"  placeholder="Nome Completo" required="required" name="completo" >
+						</div>
+					</div>
+					<div class="col-md-3"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="senha">Senha</label>
+							<input type="password" class="form-control" id="senha"  placeholder="senha" required="required" name="senha" > 
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="senhaC">Confirmar senha</label>
+							<input type="password" class="form-control" id="senhaC"  placeholder="senha confirmação" required="required" name="confirma">
+						</div>
+					</div>
+					<div class="col-md-3"></div>
+				</div>
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<button type="submit" class="btn  btn-dark" style="width: 100%; margin-top: 10px;">Criar Conta</button>
+						<br><br>
+						<a href="login.html">Já possui uma conta? Conecte-se AGORA</a>
+					</div>
+					<div class="col-md-3"></div>
+				</div>
+			</form>
+		</div>
+		<footer class="rodape text-md-center">
+			<ul class="navbar-nav text-md-center nav-justified w-100">
+				<li class="nav-item">
+					<a class="nav-link" href="#">FoundASquad - 2018</a>
+				</li>
+			</ul>
+		</footer>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript">
+			function validar(cadastro) {
+				if (cadastro.email.value == "" ||cadastro.email.value == null || cadastro.email.value.length >100) {
+					alert("Preencha o campo 'Email' com dados válidos");
+					cadastro.email.focus();
+					return false;
+				}
+			
+				if (cadastro.usuario.value == "" || cadastro.usuario.value == null || cadastro.usuario.value.length <3 || cadastro.usuario.value.length >100 ) {
+					alert("Preencha o campo 'Nome de Usuário' com dados válidos");
+					cadastro.usuario.focus();
+					return false;
+				}
+
+				if (cadastro.completo.value == "" || cadastro.completo.value == null || cadastro.completo.value.length <3 || cadastro.completo.value.length >100) {
+					alert("Preencha o campo 'Nome Completo' com dados válidos");
+					cadastro.completo.focus();
+					return false;
+				}
+
+				if (cadastro.senha.value=="" || cadastro.senha.value==null || cadastro.senha.value.length <8 ) {
+					alert("Preencha o campo 'Senha' com dados válidos");
+					cadastro.senha.focus();
+					return false;
+				}else if (cadastro.confirma.value == "" || cadastro.confirma.value == null || cadastro.confirma.value.length < 8 ) {
+					alert("Preencha o campo 'Confirmar senha' com dados válidos");
+					cadastro.confirma.focus();
+					return false;
+				}else if (cadastro.senha.value!=cadastro.confirma.value ) {
+					alert("Senhas diferentes");
+					return false;
+				}
+
+			}
+		</script>
+	</body>
+</html>

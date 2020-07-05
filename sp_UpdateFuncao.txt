@@ -1,0 +1,14 @@
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_UpdateFuncao`(in codigo int,
+in nome varchar(45),
+in descricao varchar(300))
+BEGIN
+
+	if exists (select cd_funcao from tb_funcao WHERE cd_funcao = codigo) then
+		update tb_funcao set nm_funcao =  nome, ds_funcao = descricao where cd_funcao = codigo;
+        select concat('Dados alterados com Sucesso!');
+else
+	insert into tb_funcao (nm_funcao, ds_funcao) values 
+    (nome,descricao);
+    select concat('Dados gravados com sucesso.');
+     end if;
+END

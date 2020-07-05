@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+
+			<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet"> 
+
+			<title>FoundASquad - Minhas Equipes</title>	
+
+			<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+			<link rel="stylesheet" type="text/css" href="css/estilo.css">	
+					
+		</head >
+	<body>
+
+		<div class="logo">	
+			<?php 
+				include 'conexao.php';
+				$equipes = $mysqli->query("SELECT * FROM vw_equipes WHERE nm_email = ".$_COOKIE['email']);
+				while($result = $equipes->fetch_object()){
+					echo $result->nome+" "+$result->nick+" "$result->equipe;
+				}
+			?>
+		</div>
+
+		<header>
+
+			
+
+			<nav class="navbar navbar-expand-lg navbar-dark topo">
+		
+				<a class="navbar-brand" href="index.php">
+					<img src="images/logoV7.png" width="75">
+					FoundASquad
+				</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarPrincipal" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			    	<span class="navbar-toggler-icon"></span>
+			  	</button>
+				  	<div class="collapse navbar-collapse " id="navbarPrincipal">
+						<ul class="navbar-nav text-md-center nav-justified w-100">
+					  <li class="nav-item">
+				        <a class="nav-link" href="index.php">Inicio</a>
+				      </li>
+				      
+				      
+
+				</ul>
+			</div>
+	</nav>
+		
+
+	<div class="container-fluid">
+
+	</div>
+
+
+
+
+	<footer class="rodape text-md-center">
+		<ul class="navbar-nav text-md-center nav-justified w-100">
+			<li class="nav-item">
+				<a class="nav-link" href="#">FoundASquad - 2018</a>
+			</li>
+		</ul>
+
+	</footer>
+	
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+
+</body>
+
+</html>
